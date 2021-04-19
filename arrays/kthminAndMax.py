@@ -1,3 +1,5 @@
+#-------------------------------------All elements in array sre distinct-------------------------------------#
+
 # heap is not at physical level it is at conceptual level
 # it is implemented over a list ,queue or any other datastructure
 '''
@@ -69,6 +71,7 @@ def kthSmallest(self,arr, l, r, k):
 ##########################################################################################
 
 # QuickSelect
+
 '''
 approach :
 
@@ -80,13 +83,29 @@ Also, not to recur for both left and right sides of pivot,
 but recur for one of them according to the position of pivot. 
 The worst case time complexity of this method is O(n2), 
 but it works in O(n) on average.
-
+if k is less than pivot index ,left recur else right recur
 '''
+# this algorithm can be epected in linear time iff the pivot selected is random 
+# i.e there will be a possibility of finding kth minimum element in O(n) time complexity
 
-
-
-
-
+def kthSmallest(arr, l, r, k):
+	if (k > 0 and k <= r - l + 1):
+		pos = partition(arr, l, r)
+		if (pos - l == k - 1):
+			return arr[pos] 
+		if (pos - l > k - 1): 
+			return kthSmallest(arr, l, pos - 1, k)
+		return kthSmallest(arr, pos + 1, r,
+							k - pos + l - 1)
+def partition(arr, l, r):
+	x = arr[r]
+	i = l
+	for j in range(l, r):
+		if (arr[j] <= x):
+			arr[i], arr[j] = arr[j], arr[i]
+			i += 1
+	arr[i], arr[r] = arr[r], arr[i]
+	return i
 # worst case time complexity  O(n^2), O(n) on average.
 
 #########################################################################################
