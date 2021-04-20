@@ -1,4 +1,7 @@
-# iterative approach
+"""
+approach:
+    iterate over array in reverse order
+"""
 
 def reverseArray(arr):
     i=0
@@ -8,13 +11,15 @@ def reverseArray(arr):
         i=i+1
         end=end+1
 
-# time complexity O(n)
-# space COmplexity O(1)
+# time complexity = O(n)
+# space COmplexity = O(1)
 
 ###############################################################################################
 
-# direct approach (slicing)
-
+'''
+approach :
+    python provides slicing also in reverse order so use it
+'''
 def reverseArray(arr):
     return arr[::-1]
 
@@ -23,7 +28,11 @@ def reverseArray(arr):
 
 ##########################################################################################
 
-# recursive approach
+'''
+approach:
+    recursively swap first and last element of array and 
+    continiously decreasing start and end pointer 
+'''
 
 def reverseArray(arr,start,end):
     arr[start],arr[end]=arr[end],arr[start]
